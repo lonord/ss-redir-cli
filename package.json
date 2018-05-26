@@ -1,0 +1,44 @@
+{
+  "name": "@lonord/ss-redir-cli",
+  "version": "0.2.0",
+  "description": "Client cli tool for ss-redir-service",
+  "bin": {
+    "ss-cli": "lib/cli.js"
+  },
+  "scripts": {
+    "build": "rimraf lib && tsc",
+    "prepublishOnly": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lonord/ss-redir-cli.git"
+  },
+  "keywords": [
+    "cli",
+    "shadowsocks"
+  ],
+  "author": "Loy B. <lonord.b@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lonord/ss-redir-cli/issues"
+  },
+  "homepage": "https://github.com/lonord/ss-redir-cli#readme",
+  "devDependencies": {
+    "@types/lodash": "^4.14.106",
+    "@types/node": "^9.4.6",
+    "@types/node-fetch": "^1.6.9",
+    "rimraf": "^2.6.2",
+    "tslint": "^5.10.0",
+    "typescript": "^2.8.3"
+  },
+  "dependencies": {
+    "chalk": "^2.3.2",
+    "commander": "^2.15.1",
+    "lodash": "^4.17.5",
+    "ms": "^2.1.1",
+    "node-fetch": "^2.1.2",
+    "pretty-bytes": "^4.0.2",
+    "readline-ui": "^2.2.3",
+    "readline-utils": "^2.2.3"
+  }
+}
