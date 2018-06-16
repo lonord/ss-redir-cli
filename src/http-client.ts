@@ -24,7 +24,10 @@ export default function createHTTPClient(port: number, host: string): HTTPClient
 			const res = await fetch(httpAddr + path, {
 				method: 'POST',
 				timeout: TIMEOUT,
-				body: parseRequestBody(data)
+				body: parseRequestBody(data),
+				headers: {
+					'Content-Type': 'application/json'
+				}
 			})
 			return handleResult(await res.json())
 		},
@@ -32,7 +35,10 @@ export default function createHTTPClient(port: number, host: string): HTTPClient
 			const res = await fetch(httpAddr + path, {
 				method: 'PUT',
 				timeout: TIMEOUT,
-				body: parseRequestBody(data)
+				body: parseRequestBody(data),
+				headers: {
+					'Content-Type': 'application/json'
+				}
 			})
 			return handleResult(await res.json())
 		},
