@@ -102,7 +102,7 @@ client.get(pathPrefix + '/version').then((version) => {
 				name: 'addUserGFWDomain',
 				args: ['domain'],
 				handle: async (domain) => {
-					await client.put(pathPrefix + `/gfwlist/user/${domain}`)
+					await client.put(pathPrefix + `/gfwlist/user/${encodeURIComponent(domain)}`)
 					await client.put(pathPrefix + '/action/gfwlist/validate')
 					printResult('OK')
 				}
@@ -111,8 +111,104 @@ client.get(pathPrefix + '/version').then((version) => {
 				name: 'removeUserGFWDomain',
 				args: ['domain'],
 				handle: async (domain) => {
-					await client.del(pathPrefix + `/gfwlist/user/${domain}`)
+					await client.del(pathPrefix + `/gfwlist/user/${encodeURIComponent(domain)}`)
 					await client.put(pathPrefix + '/action/gfwlist/validate')
+					printResult('OK')
+				}
+			},
+			{
+				name: 'getForwardIPList',
+				args: [],
+				handle: async () => {
+					const gfwlist = await client.get(pathPrefix + '/iplist/forward')
+					gfwlist.forEach((t) => printResult(t))
+				}
+			},
+			{
+				name: 'addForwardIPList',
+				args: ['ip'],
+				handle: async (ip) => {
+					await client.put(pathPrefix + `/iplist/forward/${encodeURIComponent(ip)}`)
+					printResult('OK')
+				}
+			},
+			{
+				name: 'removeForwardIPList',
+				args: ['domain'],
+				handle: async (ip) => {
+					await client.del(pathPrefix + `/iplist/forward/${encodeURIComponent(ip)}`)
+					printResult('OK')
+				}
+			},
+			{
+				name: 'getBypassIPList',
+				args: [],
+				handle: async () => {
+					const gfwlist = await client.get(pathPrefix + '/iplist/bypass')
+					gfwlist.forEach((t) => printResult(t))
+				}
+			},
+			{
+				name: 'addBypassIPList',
+				args: ['ip'],
+				handle: async (ip) => {
+					await client.put(pathPrefix + `/iplist/bypass/${encodeURIComponent(ip)}`)
+					printResult('OK')
+				}
+			},
+			{
+				name: 'removeBypassIPList',
+				args: ['domain'],
+				handle: async (ip) => {
+					await client.del(pathPrefix + `/iplist/bypass/${encodeURIComponent(ip)}`)
+					printResult('OK')
+				}
+			},
+			{
+				name: 'getForwardClientIPList',
+				args: [],
+				handle: async () => {
+					const gfwlist = await client.get(pathPrefix + '/clientiplist/forward')
+					gfwlist.forEach((t) => printResult(t))
+				}
+			},
+			{
+				name: 'addForwardClientIPList',
+				args: ['ip'],
+				handle: async (ip) => {
+					await client.put(pathPrefix + `/clientiplist/forward/${encodeURIComponent(ip)}`)
+					printResult('OK')
+				}
+			},
+			{
+				name: 'removeForwardClientIPList',
+				args: ['domain'],
+				handle: async (ip) => {
+					await client.del(pathPrefix + `/clientiplist/forward/${encodeURIComponent(ip)}`)
+					printResult('OK')
+				}
+			},
+			{
+				name: 'getBypassClientIPList',
+				args: [],
+				handle: async () => {
+					const gfwlist = await client.get(pathPrefix + '/clientiplist/bypass')
+					gfwlist.forEach((t) => printResult(t))
+				}
+			},
+			{
+				name: 'addBypassClientIPList',
+				args: ['ip'],
+				handle: async (ip) => {
+					await client.put(pathPrefix + `/clientiplist/bypass/${encodeURIComponent(ip)}`)
+					printResult('OK')
+				}
+			},
+			{
+				name: 'removeBypassClientIPList',
+				args: ['domain'],
+				handle: async (ip) => {
+					await client.del(pathPrefix + `/clientiplist/bypass/${encodeURIComponent(ip)}`)
 					printResult('OK')
 				}
 			},
